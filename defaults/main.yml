@@ -3,3 +3,6 @@
 
 respondd_repo: https://github.com/dereulenspiegel/respondd.git
 respondd_src_dir: "/usr/src/respondd"
+
+nixio_repo: https://github.com/Neopallium/nixio.git
+nixio_src_dir: /usr/src/nixio

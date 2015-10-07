@@ -1,0 +1,21 @@
+---
+- name: Install build requirements
+  apt: name={{item}} state=present
+  with_items:
+  - build-essential
+  - openssl
+  - libssl-dev
+  - liblua5.1-0-dev 
+  - liblua5.1-0
+  - git
+
+- name: Create nixio source dir
+  file: dest={{nixio_src_dir}} state=directory
+
+- name: Clone nixio source code
+  git: repo={{nixio_repo}} dest={{nixio_src_dir}} accept_hostkey=yes
+
+- name: Build nixio
+  shell: make
+  args:
+    chdir: "{{nixio_src_dir}}"
