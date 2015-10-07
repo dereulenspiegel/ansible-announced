@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-announced
+
+respondd_repo: https://github.com/dereulenspiegel/respondd.git
+respondd_src_dir: "/usr/src/respondd"

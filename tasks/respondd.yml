@@ -1,0 +1,20 @@
+
+- name: Install build requirements
+  apt: name={{item}} state=present
+  with_items:
+  - build-essential
+  - cmake
+  - liblua5.1-0-dev 
+  - liblua5.1-0
+  - git
+
+- name: Create respondd source dir
+  file: dest={{respondd_src_dir}} state=directory
+
+- name: Clone respondd source code
+  git: repo={{respondd_repo}} dest={{respondd_src_dir}} accept_hostkey=yes
+
+- name: Build respondd
+  shell: cmake . && make
+  args:
+    chdir: "{{respondd_src_dir}}"
